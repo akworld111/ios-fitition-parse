@@ -7,6 +7,7 @@
 //
 
 #import "ISCViewController.h"
+#import "ISCAppDelegate.h"
 
 @interface ISCViewController ()
 
@@ -18,8 +19,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-}
+    [self performSelector:@selector(gotoLoginScreen) withObject:nil afterDelay:5.0f];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 
+}
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+- (void)gotoLoginScreen{
+    ISCAppDelegate *app = (ISCAppDelegate*)[UIApplication sharedApplication].delegate;
+    [app switchToMainVC];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
